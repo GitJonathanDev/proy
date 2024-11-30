@@ -18,8 +18,8 @@ export default defineConfig({
         }),
     ],
     build: {
-        outDir: 'public/build', // Esto asegura que los archivos se generen en public/build
-        manifest: true,        // Genera el manifiesto de archivos para Laravel
+        outDir: 'public/build',  // Asegúrate de que los activos se generen en 'public/build'
+        manifest: true,           // Esto es necesario para que Laravel sepa qué archivos servir
         rollupOptions: {
             output: {
                 entryFileNames: 'assets/[name].[hash].js',
