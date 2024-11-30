@@ -17,4 +17,15 @@ export default defineConfig({
             },
         }),
     ],
+    build: {
+        outDir: 'public/build', // Esto asegura que los archivos se generen en public/build
+        manifest: true,        // Genera el manifiesto de archivos para Laravel
+        rollupOptions: {
+            output: {
+                entryFileNames: 'assets/[name].[hash].js',
+                chunkFileNames: 'assets/[name].[hash].js',
+                assetFileNames: 'assets/[name].[hash].[ext]',
+            },
+        },
+    },
 });
