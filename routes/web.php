@@ -52,7 +52,9 @@ Route::middleware([
 Route::get('/api/visitas', [VisitaController::class, 'obtenerVisitas'])->name('api.visitas');
 
 
-
+Route::get('/permisos', function () {
+    return Inertia::render('permisos');
+})->name('permisos');
 Route::middleware([EnsureAuthenticated::class, VisitaPaginaMiddleware::class])->group(function () {
     Route::get('/vista-cliente', function () {
         return Inertia::render('VistaCliente/compracliente');
@@ -120,9 +122,7 @@ Route::get('/reportes/compras', [ReporteVentaController::class, 'indexCompras'])
         Route::get('buscar', [ClienteController::class, 'index'])->name('clientes.buscar');
         Route::get('seleccionCliente/{carnetIdentidad}', [MembresiaController::class, 'seleccionCliente'])->name('cliente.seleccion');
     });
-    Route::get('/permisos', function () {
-        return Inertia::render('permisos');
-    })->name('permisos');
+ 
     Route::prefix('encargado')->group(function () {
         Route::get('index', [EncargadoController::class, 'index'])->name('encargado.index');
         Route::get('create', [EncargadoController::class, 'create'])->name('encargado.create');
@@ -252,6 +252,6 @@ Route::delete('/permisos/{codPermiso}/tiposUsuario/{codTipoUsuario}', [MenuDinam
     
 });
 
-Route::post('/login', [CustomLoginController::class, 'login'])->name('logine');
+Route::post('/login', [CustomLoginController::class, 'login'])->name('login');
 Route::post('/logout', [CustomLoginController::class, 'logout'])->name('logout');
 
